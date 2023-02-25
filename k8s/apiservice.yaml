@@ -7,5 +7,4 @@ spec:
     app: api
   ports:
   - port: 5000
-    nodePort: 30007
-  type: NodePort
+  type: LoadBalancer

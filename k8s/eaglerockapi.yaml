@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: eaglerockapi
-        image: hemersonlcosta/eaglerockapi:latest
+        image: hemersonlcosta/eaglerockapi:lastest
         resources:
           limits:
             memory: "128Mi"

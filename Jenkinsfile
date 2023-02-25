@@ -10,7 +10,7 @@ pipeline {
         stage('Build Stage') {
             steps {
                 script {
-                        dockerapp = docker.build("hemersonlcosta/eaglerockapi:latest",
+                        dockerapp = docker.build("hemersonlcosta/eaglerockapi:${env.BUILD_ID}",
                             '-f Dockerfile .')
                 }
             }
@@ -26,7 +26,6 @@ pipeline {
         // }
         stage('Deploy Stage') {
             steps {
-                sh 'envsubst < k8s/apiservice.yaml | kubectl delete -f -'
                 sh 'envsubst < k8s/eaglerockapi.yaml | kubectl apply -f -'
                 sh 'envsubst < k8s/apiservice.yaml | kubectl apply -f -'
                 sh 'envsubst < k8s/hpa.yaml | kubectl apply -f -'

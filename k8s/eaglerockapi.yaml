@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eaglerockapi-deployment
+  name: api-deployment
 spec:
   selector:
     matchLabels:
-      app: eaglerockapi
+      app: api
   template:
     metadata:
       labels:
-        app: eaglerockapi
+        app: api
     spec:
       containers:
-      - name: eaglerockapi
+      - name: api
         image: hemersonlcosta/eaglerockapi:lastest
         resources:
           limits:

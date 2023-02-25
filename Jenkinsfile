@@ -15,15 +15,16 @@ pipeline {
                 }
             }
         }
-        // stage('Push Stage') {
-        //     steps {
-        //         script {
-        //                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
-        //                     dockerapp.push('lastest')
-        //                 }
-        //         }
-        //     }
-        // }
+        stage('Push Stage') {
+            steps {
+                script {
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
+                            dockerapp.push('lastest')
+                            dockerapp.push("${env.BUILD_ID}")
+                        }
+                }
+            }
+        }
         stage('Deploy Stage') {
             steps {
                 sh 'envsubst < k8s/eaglerockapi.yaml | kubectl apply -f -'

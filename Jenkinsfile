@@ -26,8 +26,8 @@ pipeline {
         // }
         stage('Deploy Stage') {
             steps {
-                sh 'whoami'
-                sh 'envsubst < k8s/ | kubectl apply -f -'
+                sh 'envsubst < k8s/eaglerockapi.yaml | kubectl apply -f -'
+                sh 'envsubst < k8s/apiservice.yaml | kubectl apply -f -'
             }
         }
     }

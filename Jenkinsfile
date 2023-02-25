@@ -15,18 +15,18 @@ pipeline {
                 }
             }
         }
-        stage('Push Stage') {
-            steps {
-                script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
-                            dockerapp.push('lastest')
-                        }
-                }
-            }
-        }
+        // stage('Push Stage') {
+        //     steps {
+        //         script {
+        //                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
+        //                     dockerapp.push('lastest')
+        //                 }
+        //         }
+        //     }
+        // }
         stage('Deploy Stage') {
             steps {
-                sh 'envsubst < ${WORKSPACE} /deploy. vaml | kubectl apply -f -'
+                sh 'envsubst < ${WORKSPACE}/k8s/*.yaml | kubectl apply -f -'
             }
         }
     }

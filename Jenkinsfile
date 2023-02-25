@@ -26,7 +26,7 @@ pipeline {
         // }
         stage('Deploy Stage') {
             steps {
-                sh 'envsubst < ${WORKSPACE}/k8s/*.yaml | kubectl apply -f -'
+                sh 'envsubst < ./k8s/*.yaml | kubectl apply -f -'
             }
         }
     }

@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy Stage') {
             steps {
                 sh 'whoami'
-                sh 'envsubst < k8s/*.yaml | kubectl apply -f -'
+                sh 'envsubst < k8s/ | kubectl apply -f -'
             }
         }
     }

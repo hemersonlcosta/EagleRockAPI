@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eaglerockapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: eaglerockapi
+  template:
+    metadata:
+      labels:
+        app: eaglerockapi
+    spec:
+      containers:
+      - name: eaglerockapi
+        image: hemersonlcosta/eaglerockapi:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always

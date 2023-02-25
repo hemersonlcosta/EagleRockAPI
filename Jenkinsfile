@@ -24,5 +24,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy Stage') {
+            steps {
+                sh 'envsubst < ${WORKSPACE} /deploy. vaml | kubectl apply -f -'
+            }
+        }
     }
 }
+

@@ -26,7 +26,11 @@ pipeline {
             }
         }
         stage('Deploy Stage') {
+            environment{
+                tag_version = "${env.BUILD_ID}"
+            }
             steps {
+                sh 'sed -i "s/{{tag}}/$tag_version/g"  k8s/eaglerockapi.yaml'
                 sh 'envsubst < k8s/eaglerockapi.yaml | kubectl apply -f -'
                 sh 'envsubst < k8s/apiservice.yaml | kubectl apply -f -'
                 sh 'envsubst < k8s/hpa.yaml | kubectl apply -f -'

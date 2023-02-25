@@ -10,7 +10,7 @@ pipeline {
         stage('Build Stage') {
             steps {
                 script {
-                        dockerapp = docker.build("hemersonlcosta/EagleRockAPI:latest",
+                        dockerapp = docker.build("hemersonlcosta/eaglerockapi:latest",
                             '-f Dockerfile .')
                 }
             }

@@ -28,6 +28,7 @@ pipeline {
             steps {
                 sh 'envsubst < k8s/eaglerockapi.yaml | kubectl apply -f -'
                 sh 'envsubst < k8s/apiservice.yaml | kubectl apply -f -'
+                sh 'envsubst < k8s/hpa.yaml | kubectl apply -f -'
             }
         }
     }

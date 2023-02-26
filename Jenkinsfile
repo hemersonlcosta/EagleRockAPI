@@ -31,8 +31,8 @@ pipeline {
             }
             steps {
                 sh(script: "cat k8s/eaglerockapi.yaml | sed -e 's/{{tag}}/$tag_version/g' | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
-                // sh(script: "cat k8s/apiservice.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
-                // sh(script: "cat k8s/hpa.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
+                sh(script: "cat k8s/apiservice.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
+                sh(script: "cat k8s/hpa.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
             }
         }
     }

@@ -34,7 +34,7 @@ pipeline {
                 sh 'sleep 10'
                 sh(script: "cat k8s/apiservice.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
                 sh 'sleep 10'
-                sh(script: "cat k8s/hpa.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
+                // sh(script: "cat k8s/hpa.yaml | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
             }
         }
     }
